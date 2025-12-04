@@ -1,0 +1,184 @@
+import React, { useState } from 'react';
+import { RotateCcw } from 'lucide-react';
+
+const EthicsCard = ({ title, image, aspirations, mandatory, color }) => {
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  return (
+    <div style={{ perspective: '1000px' }} className="w-full h-full">
+      <div
+        className={`relative w-full h-full transition-transform duration-700 cursor-pointer ${
+          isFlipped ? '' : ''
+        }`}
+        onClick={() => setIsFlipped(!isFlipped)}
+        style={{
+          transformStyle: 'preserve-3d',
+          transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'
+        }}
+      >
+        {/* Front of card */}
+        <div
+          className={`absolute w-full h-full rounded-xl shadow-2xl overflow-hidden ${color}`}
+          style={{ backfaceVisibility: 'hidden' }}
+        >
+          <div className="relative w-full h-full flex flex-col items-center justify-center p-6">
+            <h3 className="text-4xl font-bold text-white mb-4">{title}</h3>
+            <p className="text-white/90 text-sm">Click to explore</p>
+          </div>
+        </div>
+
+        {/* Back of card */}
+        <div
+          className={`absolute w-full h-full rounded-xl shadow-2xl ${color} p-6 overflow-y-auto`}
+          style={{
+            backfaceVisibility: 'hidden',
+            transform: 'rotateY(180deg)'
+          }}
+        >
+          <div className="h-full flex flex-col">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-2xl font-bold text-white">{title}</h3>
+              <RotateCcw className="w-5 h-5 text-white/80" />
+            </div>
+            
+            <div className="flex-1 space-y-4">
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+                <h4 className="text-lg font-semibold text-white mb-2">Aspiration</h4>
+                <ul className="space-y-2 text-white/90 text-sm">
+                  {aspirations.map((item, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <span className="mr-2">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+                <h4 className="text-lg font-semibold text-white mb-2">Mandatory</h4>
+                <ul className="space-y-2 text-white/90 text-sm">
+                  {mandatory.map((item, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <span className="mr-2">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default function PMIACPEthics() {
+  const cards = [
+    {
+      title: 'Responsibility',
+      image: 'https://media.istockphoto.com/id/1434582023/photo/business-people-planning-collaboration-and-teamwork-on-a-startup-project-in-an-advertising-or.jpg?s=612x612&w=0&k=20&c=IqZO8L6XS8Y2FnLVE5z3wH8FxJvNLfPQwC1rQnJDiLw=',
+      color: 'bg-gradient-to-br from-blue-600 to-blue-800',
+      aspirations: [
+        'Make decisions based on the best interests of society and the public good',
+        'Accept responsibility for our actions and decisions',
+        'Protect proprietary information',
+        'Uphold the PMI Code of Ethics'
+      ],
+      mandatory: [
+        'Inform ourselves about norms and customs of others',
+        'Listen to others\' points of view',
+        'Approach conflict directly with those involved',
+        'Report unethical behavior to appropriate management'
+      ]
+    },
+    {
+      title: 'Respect',
+      image: 'https://media.istockphoto.com/id/1364754336/photo/successful-businesspeople-having-a-meeting-in-a-boardroom.jpg?s=612x612&w=0&k=20&c=efPGH15gBT-8JL_rLzz5fZXxL-Rh8x9M4gZt6cLW3Gw=',
+      color: 'bg-gradient-to-br from-purple-600 to-purple-800',
+      aspirations: [
+        'Inform ourselves about norms and customs of others',
+        'Listen to others\' points of view',
+        'Approach conflict directly with those involved',
+        'Conduct ourselves in a professional manner'
+      ],
+      mandatory: [
+        'Negotiate in good faith',
+        'Respect property rights of others',
+        'Do not influence others to engage in unethical behavior',
+        'Do not act in an abusive manner toward others'
+      ]
+    },
+    {
+      title: 'Fairness',
+      image: 'https://media.istockphoto.com/id/1409722748/photo/statue-of-lady-justice-in-front-of-blue-background.jpg?s=612x612&w=0&k=20&c=KL1gvLaD08bxBN8L7HfSFN9MkBjG3RFE5EFuYkXq7bE=',
+      color: 'bg-gradient-to-br from-green-600 to-green-800',
+      aspirations: [
+        'Demonstrate transparency in decision-making',
+        'Re-examine our impartiality and objectivity',
+        'Provide equal access to information',
+        'Make opportunities equally available to qualified candidates'
+      ],
+      mandatory: [
+        'Disclose conflicts of interest',
+        'Do not hire or fire based on personal considerations',
+        'Do not discriminate against others',
+        'Apply rules of the organization without favoritism'
+      ]
+    },
+    {
+      title: 'Honesty',
+      image: 'https://media.istockphoto.com/id/1311934969/photo/business-people-shaking-hands-finishing-up-meeting.jpg?s=612x612&w=0&k=20&c=X7k8L5vBsLK6cqrfEPjnx5KlJ9p3yBF3rCGJLQHSqhg=',
+      color: 'bg-gradient-to-br from-orange-600 to-orange-800',
+      aspirations: [
+        'Be truthful in communications and conduct',
+        'Provide accurate information in a timely manner',
+        'Make commitments in good faith',
+        'Create an environment where others feel safe to tell the truth'
+      ],
+      mandatory: [
+        'Do not engage in or condone dishonest behavior',
+        'Do not deceive stakeholders or the public',
+        'Do not make misleading statements',
+        'Provide accurate representations of qualifications and experience'
+      ]
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-teal-600 p-0">
+      <div className="bg-white py-8 px-8 shadow-md">
+        <div className="max-w-7xl mx-auto text-center">
+          <h1 className="text-5xl font-bold text-gray-800 mb-4">
+            PMI-ACP Code of Ethics
+          </h1>
+          <p className="text-xl text-gray-600">
+            Four Core Pillars of Professional Conduct
+          </p>
+        </div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto p-8">
+        <div className="text-center mb-8">
+          <p className="text-sm text-white">
+            Click any card to explore Aspiration and Mandatory standards
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {cards.map((card, idx) => (
+            <div key={idx} className="h-[500px]">
+              <EthicsCard {...card} />
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <p className="text-white text-sm">
+            Project Management Institute Agile Certified Practitioner (PMI-ACP)®
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
