@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMI-ACP Code of Ethics</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            perspective: 1000px;
+        }
+
+        .card-container {
+            height: 450px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .card-container.flipped .card {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            overflow: hidden;
+            background: white;
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-subtitle {
+            font-size: 1em;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .card-back-content {
+            padding: 25px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .back-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            border-radius: 5px;
+            color: white;
+        }
+
+        .section-content {
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: #333;
+            padding: 10px;
+        }
+
+        .section-content ul {
+            list-style-position: inside;
+            padding-left: 10px;
+        }
+
+        .section-content li {
+            margin-bottom: 8px;
+        }
+
+        /* Color schemes for each pillar */
+        .responsibility .card-title { color: #3498db; }
+        .responsibility .back-title { color: #3498db; }
+        .responsibility .section-title { background: #3498db; }
+
+        .respect .card-title { color: #e74c3c; }
+        .respect .back-title { color: #e74c3c; }
+        .respect .section-title { background: #e74c3c; }
+
+        .fairness .card-title { color: #f39c12; }
+        .fairness .back-title { color: #f39c12; }
+        .fairness .section-title { background: #f39c12; }
+
+        .honesty .card-title { color: #27ae60; }
+        .honesty .back-title { color: #27ae60; }
+        .honesty .section-title { background: #27ae60; }
+
+        .click-hint {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: #888;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .card-container {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>PMI-ACP Code of Ethics</h1>
+            <p>Four Core Pillars of Professional Conduct</p>
+        </div>
+
+        <div class="cards-grid">
+            <!-- Responsibility Card -->
+            <div class="card-container responsibility" onclick="this.classList.toggle('flipped')">
+                <div class="card">
+                    <div class="card-front">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop" alt="Responsibility" class="card-image">
+                        <div class="card-content">
+                            <div class="card-title">Responsibility</div>
+                            <div class="card-subtitle">
+                                Taking ownership of our decisions and their consequences, acting with integrity and high ethical standards.
+                            </div>
+                            <div class="click-hint">Click to view standards →</div>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <div class="card-back-content">
+                            <div class="back-title">Responsibility</div>
+                            
+                            <div class="section">
+                                <div class="section-title">Aspirational</div>
+                                <div class="section-content">
+                                    <ul>
+                                        <li>Make decisions based on best interests of society and public welfare</li>
+                                        <li>Accept assignments consistent with background and experience</li>
+                                        <li>Fulfill commitments we undertake</li>
+                                        <li>Protect proprietary information</li>
+                                        <li>Uphold policies and procedures</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="section">
+                                <div class="section-title">Mandatory</div>
+                                <div class="section-content">
+                                    <ul>
+                                        <li>Inform ourselves about norms and customs</li>
+                                        <li>Report unethical or illegal conduct</li>
+                                        <li>File ethics complaints when appropriate</li>
+                                        <li>Only accept appropriate assignments</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Respect Card -->
+            <div class="card-container respect" onclick="this.classList.toggle('flipped')">
+                <div class="card">
+                    <div class="card-front">
+                        <img src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?w=600&h=400&fit=crop" alt="Respect" class="card-image">
+                        <div class="card-content">
+                            <div class="card-title">Respect</div>
+                            <div class="card-subtitle">
+                                Showing high regard for ourselves, others, and resources entrusted to us, creating an environment of mutual trust.
+                            </div>
+                            <div class="click-hint">Click to view standards →</div>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <div class="card-back-content">
+                            <div class="back-title">Respect</div>
+                            
+                            <div class="section">
+                                <div class="section-title">Aspirational</div>
+                                <div class="section-content">
+                                    <ul>
+                                        <li>Inform ourselves about diverse cultures and customs</li>
+                                        <li>Listen to others' viewpoints and understand them</li>
+                                        <li>Approach conflict directly and seek resolution</li>
+                                        <li>Conduct ourselves professionally</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="section">
+                                <div class="section-title">Mandatory</div>
+                                <div class="section-content">
+                                    <ul>
+                                        <li>Negotiate in good faith</li>
+                                        <li>Do not use power to influence others' decisions</li>
+                                        <li>Do not act in abusive manner</li>
+                                        <li>Respect property rights of others</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fairness Card -->
+            <div class="card-container fairness" onclick="this.classList.toggle('flipped')">
+                <div class="card">
+                    <div class="card-front">
+                        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=400&fit=crop" alt="Fairness" class="card-image">
+                        <div class="card-content">
+                            <div class="card-title">Fairness</div>
+                            <div class="card-subtitle">
+                                Making decisions and acting impartially and objectively, constantly reexamining our practices to ensure fairness.
+                            </div>
+                            <div class="click-hint">Click to view standards →</div>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <div class="card-back-content">
+                            <div class="back-title">Fairness</div>
+                            
+                            <div class="section">
+                                <div class="section-title">Aspirational</div>
+                                <div class="section-content">
+                                    <ul>
+                                        <li>Demonstrate transparency in decision-making</li>
+                                        <li>Reexamine impartiality and objectivity</li>
+                                        <li>Provide equal access to information</li>
+                                        <li>Make opportunities available equally to all</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="section">
+                                <div class="section-title">Mandatory</div>
+                                <div class="section-content">
+                                    <ul>
+                                        <li>Disclose conflicts of interest</li>
+                                        <li>Do not hire or fire based on personal considerations</li>
+                                        <li>Do not discriminate against others</li>
+                                        <li>Apply rules consistently without favoritism</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Honesty Card -->
+            <div class="card-container honesty" onclick="this.classList.toggle('flipped')">
+                <div class="card">
+                    <div class="card-front">
+                        <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=600&h=400&fit=crop" alt="Honesty" class="card-image">
+                        <div class="card-content">
+                            <div class="card-title">Honesty</div>
+                            <div class="card-subtitle">
+                                Understanding the truth and acting in a truthful manner in communications and conduct, creating an environment of truth.
+                            </div>
+                            <div class="click-hint">Click to view standards →</div>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <div class="card-back-content">
+                            <div class="back-title">Honesty</div>
+                            
+                            <div class="section">
+                                <div class="section-title">Aspirational</div>
+                                <div class="section-content">
+                                    <ul>
+                                        <li>Seek to understand the truth</li>
+                                        <li>Be truthful in communications and conduct</li>
+                                        <li>Provide accurate information in a timely manner</li>
+                                        <li>Make commitments in good faith</li>
+                                        <li>Strive to create an environment of truth</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="section">
+                                <div class="section-title">Mandatory</div>
+                                <div class="section-content">
+                                    <ul>
+                                        <li>Do not engage in dishonest behavior</li>
+                                        <li>Do not deceive stakeholders</li>
+                                        <li>Do not make misleading statements</li>
+                                        <li>Provide accurate representations of qualifications</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
